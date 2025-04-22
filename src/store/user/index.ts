@@ -35,7 +35,6 @@ export const useUserStore = defineStore(
       username.value = res.username
       roles.value = res.roles
       accessToken.value = res.accessToken
-      return res
     }
 
     // 刷新用户信息
@@ -73,7 +72,7 @@ export const useUserStore = defineStore(
     persist: {
       key: 'userInfo',
       storage: sessionStorage,
-      pick: ['accessToken'],
+      pick: ['accessToken', 'username'],
     },
   },
 )

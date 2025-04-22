@@ -16,8 +16,13 @@ interface BaseResponse<T = any> {
 }
 
 const service = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_API, // 基础请求地址
-  timeout: 1000, // 请求超时时间
+  // 启用 mock 就请求 mock 路径
+  // 不启用 mock 就请求 正常后端路径
+  baseURL: import.meta.env.VITE_APP_DEV_USE_MOCK === 'true'
+    ? import.meta.env.VITE_APP_MOCK_BASEURL
+    : import.meta.env.VITE_APP_API_BASEURL,
+  // baseURL: import.meta.env.VITE_APP_MOCK_BASEURL,
+  timeout: 5000,
 })
 
 // axios实例拦截请求
@@ -36,7 +41,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response: AxiosResponse) => {
     if (response.status === 200) {
-      return response.data
+      return response
     }
     ElMessage({
       message: getMessageInfo(response.status),
@@ -54,7 +59,7 @@ service.interceptors.response.use(
         message: getMessageInfo(response.status),
         type: 'error',
       })
-      return Promise.reject(response)
+      return Promise.reject(response.data)
     }
     ElMessage({
       message: '网络异常，请稍后重试',
@@ -73,7 +78,7 @@ function requestInstance<T = any>(config: AxiosRequestConfig): Promise<T> {
       .request<any, AxiosResponse<BaseResponse>>(conf)
       .then((res: AxiosResponse<BaseResponse>) => {
         const data = res.data // 如果data.code为错误代码返回message信息
-        if (data.code !== 1) {
+        if (data.code !== 0) {
           ElMessage({
             message: data.message,
             type: 'error',
