@@ -133,5 +133,3 @@ export function del<T = any, U = any>(url: string, params?: U, config?: AxiosReq
     params,
   })
 }
-
-export default service
