@@ -1,0 +1,46 @@
+:root {
+    --el-fill-color-blank: var(--theme-bg-color);
+    --el-text-color-primary: var(--theme-text-color);
+    --el-bg-color: var(--theme-bg-color);
+  }
+  
+  /* 修改 el-button--primary 主题色 */
+  .el-button--primary {
+    --el-color-primary: var(--primary-color);
+  }
+  
+  .el-button--primary:hover,
+  .el-button--primary:focus {
+    --el-button-hover-border-color: var(--light-accent-color);
+    --el-button-hover-bg-color: var(--light-accent-color);
+  }
+  
+  .el-button--primary:active {
+    --el-button-active-border-color: var(--primary-color);
+    --el-button-active-bg-color: var(--primary-color);
+  }
+  
+  /* 修改 menu--horizontal 激活主题色 */
+  .el-menu.el-menu--horizontal > .el-menu-item.is-active {
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color) !important;
+  }
+  
+  .el-menu.el-menu--horizontal .el-menu-item:not(.is-disabled):focus,
+  .el-menu.el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
+    color: var(--primary-color);
+    background-color: var(--light-accent-color);
+  }
+  
+  /* 修改 el-switch--large 主题色 */
+  .el-switch.is-checked.el-switch--large .el-switch__core {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  /* 更改 el-input 获取焦点后的主题色 */
+  .el-input {
+    .el-input__wrapper.is-focus {
+      box-shadow: 0 0 0 1px var(--primary-color) inset;
+    }
+  }

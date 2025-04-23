@@ -25,12 +25,7 @@ const modules: Record<string, any> = import.meta.glob(['./modules/*.ts'], {
   eager: true,
 })
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    redirect: '/home',
-  },
-]
+const routes: Array<RouteRecordRaw> = []
 Object.keys(modules).forEach((key) => {
   const module = modules[key].default
   if (module) {

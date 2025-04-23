@@ -1,33 +1,25 @@
-// dark主题
-html[data-theme='dark']:root {
-  --theme-color: #23272e;
-  --theme-bg-color: #292d36;
-  --theme-text-color: #e2e1e7;
-  --theme-border-color: #3c3f4a;
-  --theme-link-color: #b6b5f2;         // 马卡龙紫
-  --theme-link-hover-color: #ffd6e0;   // 马卡龙粉
-  --theme-accent-color: #b5ead7;       // 马卡龙薄荷绿
-  --theme-accent-hover-color: #ffdac1; // 马卡龙奶油黄
-  --theme-shadow-color: rgba(0, 0, 0, 0.5);
-
-  // 额外马卡龙色
-  --primary-color: #ffd6e0;
-  --success-color: #b5ead7;
-  --warning-color: #ffdac1;
-  --danger-color: #ffb7b2;
-  --info-color: #c7ceea;
-  --panel-bg-color: #2e313a;
-  --text-light: #a3a3a3;
-}
-// light主题
 html[data-theme='light']:root {
-  --primary-color:   #ffd6e0;
-  --success-color:   #b5ead7;
-  --warning-color:   #ffdac1;
-  --danger-color:    #ffb7b2;
-  --info-color:      #c7ceea;
-  --main-bg-color:   #f9f9f9;
-  --panel-bg-color:  #fff1f7;
-  --text-color:      #5f5f5f;
-  --text-light:      #a3a3a3;
+  --theme-bg-color: var(--light-bg-color);
+  --theme-panel-bg: var(--light-panel-bg);
+  --theme-text-color: var(--light-text-color);
+  --theme-text-light: var(--light-text-light);
+  --theme-border-color: var(--light-border-color);
+  --theme-link-color: var(--light-link-color);
+  --theme-link-hover-color: var(--light-link-hover-color);
+  --theme-accent-color: var(--light-accent-color);
+  --theme-accent-hover-color: var(--light-accent-hover-color);
+  --theme-shadow-color: var(--light-shadow-color);
+}
+
+html[data-theme='dark']:root {
+  --theme-bg-color: var(--dark-bg-color);
+  --theme-panel-bg: var(--dark-panel-bg);
+  --theme-text-color: var(--dark-text-color);
+  --theme-text-light: var(--dark-text-light);
+  --theme-border-color: var(--dark-border-color);
+  --theme-link-color: var(--dark-link-color);
+  --theme-link-hover-color: var(--dark-link-hover-color);
+  --theme-accent-color: var(--dark-accent-color);
+  --theme-accent-hover-color: var(--dark-accent-hover-color);
+  --theme-shadow-color: var(--dark-shadow-color);
 }

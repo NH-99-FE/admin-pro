@@ -25,7 +25,7 @@ async function userLogin() {
     await userStore.storeUserLogin(userInfo)
   }
   finally {
-    router.push('/home')
+    router.push('/')
   }
 }
 </script>
