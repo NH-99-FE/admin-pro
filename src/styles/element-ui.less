@@ -1,46 +1,145 @@
 :root {
-    --el-fill-color-blank: var(--theme-bg-color);
-    --el-text-color-primary: var(--theme-text-color);
-    --el-bg-color: var(--theme-bg-color);
-  }
+  --el-fill-color-blank: var(--light-bg-color);
+  --el-text-color-primary: var(--light-text-color);
+  --el-bg-color: var(--light-panel-bg);
   
-  /* 修改 el-button--primary 主题色 */
-  .el-button--primary {
-    --el-color-primary: var(--primary-color);
-  }
-  
-  .el-button--primary:hover,
-  .el-button--primary:focus {
-    --el-button-hover-border-color: var(--light-accent-color);
-    --el-button-hover-bg-color: var(--light-accent-color);
-  }
-  
-  .el-button--primary:active {
-    --el-button-active-border-color: var(--primary-color);
-    --el-button-active-bg-color: var(--primary-color);
-  }
-  
-  /* 修改 menu--horizontal 激活主题色 */
-  .el-menu.el-menu--horizontal > .el-menu-item.is-active {
-    border-bottom: 2px solid var(--primary-color);
-    color: var(--primary-color) !important;
-  }
-  
-  .el-menu.el-menu--horizontal .el-menu-item:not(.is-disabled):focus,
-  .el-menu.el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
-    color: var(--primary-color);
-    background-color: var(--light-accent-color);
-  }
-  
-  /* 修改 el-switch--large 主题色 */
-  .el-switch.is-checked.el-switch--large .el-switch__core {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-  }
-  
-  /* 更改 el-input 获取焦点后的主题色 */
-  .el-input {
-    .el-input__wrapper.is-focus {
-      box-shadow: 0 0 0 1px var(--primary-color) inset;
-    }
-  }
+  /* 覆盖 Element Plus 功能色 */
+  --el-color-primary: var(--primary-color);
+  --el-color-success: var(--success-color);
+  --el-color-warning: var(--warning-color);
+  --el-color-danger: var(--danger-color);
+  --el-color-info: var(--info-color);
+}
+
+/* 修改 el-button--primary 主题色 */
+.el-button--primary {
+  --el-color-primary: var(--primary-color);
+  --el-button-bg-color: var(--primary-color);
+  --el-button-border-color: var(--primary-color);
+  --el-button-text-color: #fff;
+}
+
+.el-button--primary:hover,
+.el-button--primary:focus {
+  --el-button-hover-border-color: var(--light-link-color);
+  --el-button-hover-bg-color: var(--light-link-color);
+}
+
+.el-button--primary:active {
+  --el-button-active-border-color: var(--light-link-hover-color);
+  --el-button-active-bg-color: var(--light-link-hover-color);
+}
+
+/* 修改 menu--horizontal 激活主题色 */
+.el-menu.el-menu--horizontal > .el-menu-item.is-active {
+  border-bottom: 2px solid var(--primary-color);
+  color: var(--primary-color) !important;
+}
+
+.el-menu.el-menu--horizontal .el-menu-item:not(.is-disabled):focus,
+.el-menu.el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
+  color: var(--primary-color);
+  background-color: rgba(106, 90, 205, 0.1);
+}
+
+/* 修改 el-switch--large 主题色 */
+.el-switch.is-checked .el-switch__core {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.el-switch:not(.is-checked):hover .el-switch__core {
+  border-color: #7e6ce7;
+}
+
+/* 更改 el-input 获取焦点后的主题色 */
+.el-input .el-input__wrapper.is-focus {
+  box-shadow: 0 0 0 1px var(--primary-color) inset !important;
+}
+
+.el-input .el-input__wrapper:hover {
+  box-shadow: 0 0 0 1px #7e6ce7 inset;
+}
+
+/* 添加其他组件的主题色调整 */
+.el-checkbox__input.is-checked .el-checkbox__inner {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.el-radio__input.is-checked .el-radio__inner {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.el-pagination.is-background .el-pager li.is-active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.el-select .el-input.is-focus .el-input__wrapper {
+  box-shadow: 0 0 0 1px var(--primary-color) inset !important;
+}
+
+/* 导航菜单样式 */
+.el-menu {
+  --el-menu-hover-bg-color: rgba(106, 90, 205, 0.1);
+  --el-menu-active-color: var(--primary-color);
+  border-right-color: var(--light-border-color) !important;
+}
+
+.el-menu-item.is-active {
+  color: var(--primary-color) !important;
+}
+
+/* 分页组件样式 */
+.el-pagination {
+  --el-pagination-button-color: var(--light-text-color);
+  --el-pagination-hover-color: var(--primary-color);
+}
+
+.el-pagination .el-pager li.is-active {
+  color:var(--primary-color);
+}
+
+.el-pagination .el-pager li:hover:not(.is-active) {
+  color: var(--primary-color);
+}
+
+.el-pagination .btn-prev:hover, 
+.el-pagination .btn-next:hover,
+.el-pagination .el-select:hover .el-input__wrapper {
+  color: var(--primary-color);
+}
+
+
+
+/* 下拉菜单样式 */
+
+.el-select-dropdown__item {
+  color: var(--light-text-color);
+}
+
+.el-select-dropdown__item.hover, 
+.el-select-dropdown__item:hover {
+  color: var(--primary-color);
+  background-color: rgba(106, 90, 205, 0.1);
+}
+
+.el-select-dropdown__item.is-selected {
+  color: var(--primary-color) !important;
+  font-weight: bold;
+}
+
+.el-popper.is-light .el-popper__arrow::before {
+  border-color: var(--light-border-color);
+  background: var(--light-panel-bg);
+}
+
+/* 激活状态的分页大小 */
+.el-pagination .el-select .el-select__wrapper.is-focused {
+  box-shadow: 0 0 0 1px var(--primary-color) inset !important;
+}
+.el-pagination .el-select .el-select__wrapper {
+  box-shadow: 0 0 0 1px var(--light-border-color) inset;
+}

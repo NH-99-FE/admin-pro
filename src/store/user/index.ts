@@ -4,7 +4,6 @@ import { refreshUserInfo, userLogin } from '@/api/user'
 // 组合式写法 Pinia 用户模块
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-
 // defineStore 第一个参数为 store 名称，第二个参数为 setup 函数（组合式写法）
 export const useUserStore = defineStore(
   'user',
@@ -29,12 +28,16 @@ export const useUserStore = defineStore(
         roles.value = partial.roles
     }
 
+    const resetInfo = () => {
+      username.value = ''
+      roles.value = []
+      accessToken.value = ''
+    }
+
     // 登录
     async function storeUserLogin(data: LoginRequest) {
       const res = await userLogin(data)
-      username.value = res.username
-      roles.value = res.roles
-      accessToken.value = res.accessToken
+      updateInfo(res.data)
     }
 
     // 刷新用户信息
@@ -44,14 +47,10 @@ export const useUserStore = defineStore(
           const res = await refreshUserInfo({
             accessToken: accessToken.value,
           })
-          username.value = res.username
-          roles.value = res.roles
-          accessToken.value = res.accessToken
+          updateInfo(res.data)
         }
         catch {
-          username.value = ''
-          roles.value = []
-          accessToken.value = ''
+          resetInfo()
         }
       }
     }
@@ -63,6 +62,7 @@ export const useUserStore = defineStore(
       roles,
       isLoggedIn,
       updateInfo,
+      resetInfo,
       storeUserLogin,
       storeRefreshUserInfo,
     }

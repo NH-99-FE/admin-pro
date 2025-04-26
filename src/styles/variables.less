@@ -1,44 +1,46 @@
 :root {
   /* 主色系 */
-  --primary-color:   #ffd6e0;   /* 甜美的粉色，主色 */
-  --success-color:   #b5ead7;   /* 清新的薄荷绿色，成功 */
-  --warning-color:   #ffdac1;   /* 温暖的橙色，警告 */
-  --danger-color:    #ffb7b2;   /* 柔和的红色，危险 */
-  --info-color:      #c7ceea;   /* 清新的蓝色，信息 */
+  --primary-color:   #6a5acd;   /* 优雅的紫罗兰色，主色 */
+  --success-color:   #7fd1a3;   /* 柔和的薄荷绿，成功 */
+  --warning-color:   #ffb980;   /* 柔和的杏橙色，警告 */
+  --danger-color:    #ff8a85;   /* 柔和的珊瑚红，危险 */
+  --info-color:      #8abbe8;   /* 柔和的天蓝色，信息 */
 
   /* 亮色系（用于浅色主题） */
-  --light-bg-color:          #fff8fb;    /* 页面背景 */
-  --light-panel-bg:          #fff1f7;    /* 面板背景 */
-  --light-text-color:        #5f5f5f;    /* 主文本 */
-  --light-text-light:        #a3a3a3;    /* 次文本 */
-  --light-border-color:      #f3c6e8;    /* 边框 */
-  --light-link-color:        #b6b5f2;    /* 链接 */
-  --light-link-hover-color:  #ffd6e0;    /* 链接悬停 */
-  --light-accent-color:      #b5ead7;    /* 强调色 */
-  --light-accent-hover-color:#ffdac1;    /* 强调色悬停 */
-  --light-shadow-color:      rgba(255, 182, 225, 0.18); /* 阴影 */
+  --light-bg-color:          #f9f9fc;    /* 页面背景 */
+  --light-panel-bg:          #ffffff;    /* 面板背景 */
+  --light-text-color:        #333333;    /* 主文本 */
+  --light-text-light:        #777777;    /* 次文本 */
+  --light-border-color:      #e0e0e0;    /* 边框 */
+  --light-link-color:        #7e6ce7;    /* 链接 */
+  --light-link-hover-color:  #5a4cbe;    /* 链接悬停 */
+  --light-accent-color:      #8c7df7;    /* 强调色 */
+  --light-accent-hover-color:#7269da;    /* 强调色悬停 */
+  --light-shadow-color:      rgba(108, 99, 255, 0.12); /* 阴影 */
   
   /* 暗色系（用于暗黑主题） */
-  --dark-bg-color:              #2c2c2c;   /* 页面背景 */
-  --dark-panel-bg:              #3a3a3a;   /* 面板背景 */
-  --dark-text-color:            #e0e0e0;   /* 主文本 */
-  --dark-text-light:            #b0b0b0;   /* 次文本 */
-  --dark-border-color:          #3c3f4a;   /* 边框 */
-  --dark-link-color:            #b6b5f2;   /* 链接 */
-  --dark-link-hover-color:      #ffd6e0;   /* 链接悬停 */
-  --dark-accent-color:          #b5ead7;   /* 强调色 */
-  --dark-accent-hover-color:    #ffdac1;   /* 强调色悬停 */
-  --dark-shadow-color:          rgba(0, 0, 0, 0.5); /* 阴影 */
+  --dark-bg-color:              #1a1a2e;   /* 页面背景 */
+  --dark-panel-bg:              #242444;   /* 面板背景 */
+  --dark-text-color:            #f0f0f0;   /* 主文本 */
+  --dark-text-light:            #b8b8b8;   /* 次文本 */
+  --dark-border-color:          #363663;   /* 边框 */
+  --dark-link-color:            #a395ff;   /* 链接 */
+  --dark-link-hover-color:      #c4b8ff;   /* 链接悬停 */
+  --dark-accent-color:          #8f83f7;   /* 强调色 */
+  --dark-accent-hover-color:    #a79bff;   /* 强调色悬停 */
+  --dark-shadow-color:          rgba(0, 0, 0, 0.25); /* 阴影 */
 }
 
 body {
-    background: var(--main-bg-color);
-    color: var(--text-color);
-  }
-  .button-primary {
-    background: var(--primary-color);
-    color: #fff;
-  }
-  .panel {
-    background: var(--panel-bg-color);
+  background: var(--light-bg-color);
+  color: var(--light-text-color);
+}
+
+.button-primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.panel {
+  background: var(--light-panel-bg);
 }

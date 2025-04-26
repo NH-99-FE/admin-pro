@@ -91,7 +91,7 @@ function requestInstance<T = any>(config: AxiosRequestConfig): Promise<T> {
             type: 'success',
           })
           // 此处返回data信息 也就是 api 中配置好的 Response类型
-          resolve(data.data as T)
+          resolve(data as T)
         }
       })
   })
@@ -107,7 +107,7 @@ export function get<T = any, U = any>(url: string, params?: U, config?: AxiosReq
   })
 }
 
-export function post<T = any, U = any>(url: string, data?: U, config?: AxiosRequestConfig): Promise<T> {
+export function post<T = any, U = any>(url: string, data: U, config?: AxiosRequestConfig): Promise<T> {
   return requestInstance({
     ...config,
     url,
@@ -116,20 +116,20 @@ export function post<T = any, U = any>(url: string, data?: U, config?: AxiosRequ
   })
 }
 
-export function put<T = any, U = any>(url: string, data?: U, config?: AxiosRequestConfig): Promise<T> {
+export function put<T = any, U = any>(url: string, params?: U, config?: AxiosRequestConfig): Promise<T> {
   return requestInstance({
     ...config,
     url,
     method: 'PUT',
-    data,
+    params,
   })
 }
 
-export function del<T = any, U = any>(url: string, params?: U, config?: AxiosRequestConfig): Promise<T> {
+export function del<T = any, U = any>(url: string, data: U, config?: AxiosRequestConfig): Promise<T> {
   return requestInstance({
     ...config,
     url,
     method: 'DELETE',
-    params,
+    data,
   })
 }

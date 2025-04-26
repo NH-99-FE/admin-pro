@@ -13,8 +13,10 @@ function handleSetting() {
 function handleClose() {
   showSetting.value = false
 }
-const { username } = storeToRefs(useUserStore())
+const userStore = useUserStore()
+const { username } = storeToRefs(userStore)
 function logout() {
+  userStore.resetInfo()
   sessionStorage.removeItem('userInfo')
   ElMessage({
     message: '退出成功',

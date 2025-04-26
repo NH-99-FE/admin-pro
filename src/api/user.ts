@@ -13,11 +13,25 @@ export interface LoginResponse {
   roles: string[]
   accessToken: string
 }
+
+interface UserState {
+  username: string
+  accessToken: string
+  refereshToken?: string
+  roles: Array<string>
+}
+
+export interface LoginResponse {
+  code: number
+  message: string
+  data: UserState
+}
+
 // 定义的接口
-export async function userLogin(data?: LoginRequest) {
+export async function userLogin(data?: LoginRequest): Promise<LoginResponse> {
   return post<LoginResponse>('/login', data)
 }
 
-export async function refreshUserInfo(data?: reLoginRequest) {
+export async function refreshUserInfo(data?: reLoginRequest): Promise<LoginResponse> {
   return post<LoginResponse>('/getUserInfo', data)
 }
