@@ -1,4 +1,5 @@
-import { post } from '@/http/request'
+import type { Response } from './types/response'
+import { get, post } from '@/http/request'
 
 export interface LoginRequest {
   username: string
@@ -6,11 +7,6 @@ export interface LoginRequest {
 }
 // 刷新登录信息需要的参数
 export interface reLoginRequest {
-  accessToken: string
-}
-export interface LoginResponse {
-  username: string
-  roles: string[]
   accessToken: string
 }
 
@@ -21,17 +17,45 @@ interface UserState {
   roles: Array<string>
 }
 
-export interface LoginResponse {
-  code: number
-  message: string
-  data: UserState
+// 单个角色
+export interface UserRole {
+  roleId: number
+  roleName: string
 }
+
+// 单个用户
+export interface User {
+  id: number
+  nickname: string
+  username?: string
+  role: UserRole[]
+}
+
+// 更新用户角色的参数类型
+export interface UpdateUserParams {
+  id: number
+  nickname: string
+  role: UserRole[]
+}
+
+// 用户列表（其实就是 UserListItem 的数组）
+export type UserList = User[]
 
 // 定义的接口
-export async function userLogin(data?: LoginRequest): Promise<LoginResponse> {
-  return post<LoginResponse>('/login', data)
+export function userLogin(data?: LoginRequest): Promise<Response<UserState>> {
+  return post<Response<UserState>>('/login', data)
 }
 
-export async function refreshUserInfo(data?: reLoginRequest): Promise<LoginResponse> {
-  return post<LoginResponse>('/getUserInfo', data)
+export function refreshUserInfo(data?: reLoginRequest): Promise<Response<UserState>> {
+  return post<Response<UserState>>('/getUserInfo', data)
+}
+
+// 获取用户列表接口
+export function getUserList(): Promise<Response<UserList>> {
+  return get<Response<UserList>>('/users')
+}
+
+// 更新用户权限
+export function updateUserRole(params: UpdateUserParams): Promise<Response<User>> {
+  return post<Response<User>>('/users', params)
 }

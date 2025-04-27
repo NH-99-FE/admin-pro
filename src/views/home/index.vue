@@ -1,16 +1,10 @@
 <script lang="ts" setup>
+import type { ProjectList } from '@/api/project'
 import { getProjectList } from '@/api/project'
 import { computed, onMounted, reactive, ref, watch } from 'vue'
 
-interface Iproject {
-  id: number
-  userId: number
-  title: string
-  introduction: string
-}
-
 // 全部数据列表
-const projectList = ref<Iproject[]>([])
+const projectList = ref<ProjectList>([])
 const searchDate = reactive({
   title: '',
   introduction: '',
@@ -42,7 +36,7 @@ const dataList = computed(() => {
 
 // 查询数据
 function onSearch() {
-  let res: Iproject[] = []
+  let res: ProjectList = []
   if (searchDate.title || searchDate.introduction) {
     if (searchDate.title) {
       res = projectList.value.filter((item) => {
@@ -64,10 +58,7 @@ function onSearch() {
 }
 
 // 搜索数据发生变化，重新获取原始数据
-watch([
-  () => searchDate.title,
-  () => searchDate.introduction,
-], () => {
+watch([() => searchDate.title, () => searchDate.introduction], () => {
   fetchData()
 })
 
